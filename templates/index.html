@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title%} Coffee and Wifi {% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="./static/css/styles.css">
+{%endblock%}
+
+{% block content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/eedb7689a0.js" crossorigin="anonymous"></script>
+{% endblock %}
+<section class="header">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="header-title"><i class="fa-solid fa-coffee fa-xl"></i> Coffee & Wifi <i class="fa-solid fa-wifi fa-xl"></i></h1>
+            <p class="header-paragraph">Want to work in a cafe but need power and wifi?</p>
+            <p class="header-paragraph">You've found the right place! Checkout my collection of cafes with data on power socket availability, wifi speed and coffee quality.</p>
+            <hr>
+            <button type="button" class="btn btn-warning btn-lg show-me-button"> <a href="{{ url_for('cafes') }}">Show Me!</a></button>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+{% block title%}All cafes{% endblock %}
+
+{% block content %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="./static/css/styles.css">
+{%endblock%}
+<h1>All Cafes</h1>
+<div class="container cafe-table-container">
+  <div class="row">
+    <table class="table table-borderless">
+      <thead class="thead-dark">
+        <tr>
+          {% for content in table_header: %}
+            <th scope="col">{{content}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for cafe in table_detail: %}
+        <tr>
+          {% for i in range(table_header|length): %}
+            {% if i == 1: %}
+              <td><a class="map-link" href="{{ cafe[i] }}" target="_blank">Map Location</a></td>
+            {% else %}
+              <td>{{ cafe[i] }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p><a class="return-link" href="{{ url_for('homepage') }}">Return To Index Page</p>
+</div>
+{% endblock %}

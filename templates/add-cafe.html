@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title%} Add Cafe {% endblock %}
+
+{% block content %}
+{% block link %}
+    <link rel="stylesheet" href="./static/css/styles.css">
+{%endblock%}
+<section class="add-cafe">
+
+    <div class="container form-container">
+        <h1>Add a new cafe into database</h1><br>
+        <form class="form" method="post" action="{{ url_for('add_cafes') }}">
+            {{ cafe_rating_form.csrf_token }}
+
+            {{ wtf.quick_form(cafe_rating_form, novalidate=True) }}
+            {% if cafe_rating_form.submit.data == True:%}
+                {{ url_for('cafes') }}
+            {% endif %}
+        </form>
+        <div class="all-cafes-link">
+            <a class="all-cafes-link" href="{{ url_for('cafes') }}">See all cafes</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
